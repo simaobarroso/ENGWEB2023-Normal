@@ -104,8 +104,9 @@ GET /plantas/1 200 2.774 ms - 4
 
 
 
-EXEMPLO DE INPUT RECEBIDO NO POSTMAN 
+EXEMPLO DE INPUT RECEBIDO NO POSTMAN !!!
 
+POST de uma planta com id 1 (id nao existente na base de dados)
 {
     "_id": 1,
     "__v": 0
@@ -127,6 +128,7 @@ A Web App encontra-se na pasta "ex2" e para ser usada:
 >> cd ex2
 >> npm install
 >> npm start
+
 
 
 

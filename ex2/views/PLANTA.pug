@@ -26,7 +26,8 @@ block content
           td= c.Freguesia
         tr
           th Espécie
-          td= c.Espécie
+          td
+            a(href="/especies/"+c.Espécie)= c.Espécie
         tr
           th Nome Científico
           td= c['Nome Científico']
