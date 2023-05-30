@@ -113,6 +113,8 @@ POST de uma planta com id 1 (id nao existente na base de dados)
 }
 
 http://localhost:15030/plantas/1
+
+Delete dessa planta. Resultado do Postman
 {
     "acknowledged": true,
     "deletedCount": 1
@@ -130,8 +132,9 @@ A Web App encontra-se na pasta "ex2" e para ser usada:
 >> npm start
 
 
+exemplo de rotas de teste:
 
-
-
-[NOTAS FINAIS]: ------------------------------------------------------------------------------------------------
+http://localhost:15031/especies/pinheiro%20manso
+http://localhost:15031/
+http://localhost:15031/20615585
 
