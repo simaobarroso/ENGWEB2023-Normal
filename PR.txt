@@ -2,15 +2,13 @@
 
 Estou a usar um teclado em ingles por isso pode acontecer de palavras nao tem acentos.
 
-ALTERACOES AO DATASET
-	Na pasta data estao o dataset original e o dataset alterado
 
 1.1
-
+ALTERACOES AO DATASET
 Utilizando a funcionalidade do ctrl f do vscode alterei o campo "Id" para ter o nome "_id" para assim
 estar de acordo com o mongo db
 
-Para dar import do ficheiro para o mongo
+Para dar import do ficheiro para o mongo (estando na pasta data)
 mongoimport -d plantas -c plantas --file plantas.json --jsonArray
 
 Resultado:
@@ -29,9 +27,12 @@ db.plantas.countDocuments()
 db.plantas.find({Freguesia: "São Domingos de Rana"}).count()
 5903
 
+(ou utilizando regex tambem se poderia usar db.plantas.find({Freguesia: {$regex:"São Domingos de Rana"}}).count())
+
+
 3.Qual a lista de freguesias (ordenada alfabeticamente e sem repetições)?
 
-db.plantas.distinct("Freguesia")
+db.plantas.distinct("Freguesia").sort()
 [
   '',
   'Abóboda',
@@ -40,6 +41,8 @@ db.plantas.distinct("Freguesia")
   'U.F. Carcavelos e Parede',
   'U.F. Cascais e Estoril'
 ]
+
+
 
 
 4.Qual a distribuição dos registos por freguesia (quantos registos em cada freguesia)
@@ -92,12 +95,30 @@ A API encontra-se na pasta "ex1" e para ser usada:
 >> npm install
 >> npm start
 
-Testando com o postman deu tudo correto: (segue em baixo um exemplo do outpur da consola e os codigo)
+Testando com o postman deu tudo correto: (segue em baixo um exemplo do output da consola e os codigo)
 POST /plantas 201 13.371 ms - 17
 GET /plantas/1 200 15.697 ms - 17
 DELETE /plantas/1 200 5.842 ms - 38
 GET /plantas/1 200 2.774 ms - 4
 
+
+
+
+EXEMPLO DE INPUT RECEBIDO NO POSTMAN 
+
+{
+    "_id": 1,
+    "__v": 0
+}
+
+http://localhost:15030/plantas/1
+{
+    "acknowledged": true,
+    "deletedCount": 1
+}
+
+GET /plantas?especie=bordo%20negundo 200 210.542 ms - 398495
+GET /plantas?implant=Arruamento 200 1192.290 ms - 8749903
 
 
 2)EXERCICIO 2 ---------------------------------------------------------------------------
@@ -106,6 +127,8 @@ A Web App encontra-se na pasta "ex2" e para ser usada:
 >> cd ex2
 >> npm install
 >> npm start
+
+
 
 
 [NOTAS FINAIS]: ------------------------------------------------------------------------------------------------

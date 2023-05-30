@@ -12,7 +12,7 @@ router.get('/plantas', function(req, res) {
           res.status(200).json(dados)
         })
         .catch(erro => {
-          res.status(520).json({erro: erro, mensagem: "Não consegui obter a lista de animais da especie pedida"})
+          res.status(520).json({erro: erro, mensagem: "Não consegui obter a lista de plantas da especie pedida"})
       })
     } else if (req.query.implant) {
       Planta.getPlanta_implant(req.query.implant)
@@ -20,7 +20,7 @@ router.get('/plantas', function(req, res) {
           res.status(200).json(dados)
         })
         .catch(erro => {
-          res.status(520).json({erro: erro, mensagem: "Não consegui obter a lista de implantes daquele ano "})
+          res.status(520).json({erro: erro, mensagem: "Não consegui obter a lista de a lista dos registos com implantação naquele requisito "})
       })
     } else {
       res.status(520).json({mensagem: "Query inválida."})
@@ -32,7 +32,7 @@ router.get('/plantas', function(req, res) {
         res.status(200).json(dados)
       })
       .catch(erro => {
-        res.status(520).json({erro: erro, mensagem: "Não consegui obter a lista de contratos."})
+        res.status(520).json({erro: erro, mensagem: "Não consegui obter a lista de plantas."})
       })
   }
 });
@@ -53,7 +53,7 @@ router.get('/plantas/especies', function(req, res, next) {
       res.jsonp(planta);
     })
     .catch(erro => {
-      res.render('error', {error: erro, message: "Erro na lista de plantas"})
+      res.render('error', {error: erro, message: "Erro na lista de especies"})
     })
 });
 
@@ -87,7 +87,7 @@ router.delete('/plantas/:id',(req,res) => {
       res.json(dados)
     })
     .catch(erro => {
-      res.status(605).json({erro:erro,message: "Erro a apagar o planta."})
+      res.status(605).json({erro:erro,message: "Erro a apagar uma planta."})
     })
 
 })
