@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  .w3-card-4
+    header.w3-container.w3-teal
+      h1 Planta [Nº de Planta: #{c._id}] #[a(href="/") VOLTAR]
+    .w3-container
+      table.w3-table-all
+        tr
+          th _id
+          td= c._id
+        tr
+          th Número de Registo
+          td= c['Número de Registo']
+        tr
+          th Código de rua
+          td= c['Código de rua']
+        tr
+          th Rua
+          td= c.Rua
+        tr
+          th Local
+          td= c.Local
+        tr
+          th Freguesia
+          td= c.Freguesia
+        tr
+          th Espécie
+          td= c.Espécie
+        tr
+          th Nome Científico
+          td= c['Nome Científico']
+        tr
+          th Origem
+          td= c.Origem
+        tr
+          th Data de Plantação
+          td= c['Data de Plantação']
+        tr
+          th Estado
+          td= c.Estado
+        tr
+          th Caldeira
+          td= c.Caldeira
+        tr
+          th Tutor
+          td= c.Tutor
+        tr
+          th Implantação
+          td= c.Implantação
+        tr
+          th Gestor
+          td= c.Gestor
+        tr
+          th Data de actualização
+          td= c['Data de actualização']
+        tr
+          th Número de intervenções
+          td= c['Número de intervenções']
+
+    footer.w3-container.w3-teal
+      h5 Generated for Exame by Simao Barroso(a96834)
+
+    

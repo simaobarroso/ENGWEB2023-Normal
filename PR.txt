@@ -5,27 +5,84 @@ Estou a usar um teclado em ingles por isso pode acontecer de palavras nao tem ac
 ALTERACOES AO DATASET
 	Na pasta data estao o dataset original e o dataset alterado
 
+1.1
 
+Utilizando a funcionalidade do ctrl f do vscode alterei o campo "Id" para ter o nome "_id" para assim
+estar de acordo com o mongo db
+
+Para dar import do ficheiro para o mongo
+mongoimport -d plantas -c plantas --file plantas.json --jsonArray
+
+Resultado:
+2023-05-30T14:12:39.837+0100	connected to: mongodb://localhost/
+2023-05-30T14:12:40.649+0100	29617 document(s) imported successfully. 0 document(s) failed to import.
 
 
 1.2) QUERIES ------------------------------------
 
-1. 
+1. Quantos registos estão na base de dados;
+db.plantas.countDocuments()
+29617
 
 
+2.Quantos registos de plantação se encontram na freguesia "São Domingos de Rana"?
+db.plantas.find({Freguesia: "São Domingos de Rana"}).count()
+5903
 
-2.
+3.Qual a lista de freguesias (ordenada alfabeticamente e sem repetições)?
+
+db.plantas.distinct("Freguesia")
+[
+  '',
+  'Abóboda',
+  'Alcabideche',
+  'São Domingos de Rana',
+  'U.F. Carcavelos e Parede',
+  'U.F. Cascais e Estoril'
+]
 
 
+4.Qual a distribuição dos registos por freguesia (quantos registos em cada freguesia)
+db.plantas.aggregate([ { $group : { _id: "$Freguesia", total: {$count: {}}}}])
 
-3.
+[
+  { _id: 'Alcabideche', total: 4034 },
+  { _id: 'São Domingos de Rana', total: 5903 },
+  { _id: 'Abóboda', total: 2 },
+  { _id: 'U.F. Carcavelos e Parede', total: 7629 },
+  { _id: '', total: 26 },
+  { _id: 'U.F. Cascais e Estoril', total: 12023 }
+]
 
 
+5.Qual a distribuição dos registos por espécie?
+db.plantas.aggregate([ { $group : { _id: "$Espécie", total: {$count: {}}}}])
 
-4.
+[
+  { _id: 'jacaranda', total: 684 },
+  { _id: 'Hibisco', total: 3 },
+  { _id: 'loureiro real', total: 3 },
+  { _id: 'a identificar', total: 1311 },
+  { _id: 'ulmeiro', total: 19 },
+  { _id: 'A identificar', total: 5 },
+  { _id: 'limoeiro', total: 19 },
+  { _id: 'olaia', total: 567 },
+  { _id: 'amieiro', total: 35 },
+  { _id: 'pinheiro das canarias', total: 4 },
+  { _id: 'lagerstroemia', total: 406 },
+  { _id: 'Jacaranda', total: 141 },
+  { _id: 'cipreste comum', total: 281 },
+  { _id: 'pinheiro do alepo', total: 559 },
+  { _id: 'tilia prateada', total: 7 },
+  { _id: 'Bordo Prateado', total: 7 },
+  { _id: 'Borracheira', total: 33 },
+  { _id: 'buganvilia', total: 6 },
+  { _id: 'pinheiro bravo', total: 20 },
+  { _id: 'eugenia', total: 5 }
+]
 
-
-5.
+NOTA: HA MAIS PLANTAS, para as descobrir e as suas disbrituicoes bastava escrever it no mongosh ate a que se chegasse ao resultado final 
+Type "it" for more
 
 
 
@@ -34,6 +91,12 @@ A API encontra-se na pasta "ex1" e para ser usada:
 >> cd ex1
 >> npm install
 >> npm start
+
+Testando com o postman deu tudo correto: (segue em baixo um exemplo do outpur da consola e os codigo)
+POST /plantas 201 13.371 ms - 17
+GET /plantas/1 200 15.697 ms - 17
+DELETE /plantas/1 200 5.842 ms - 38
+GET /plantas/1 200 2.774 ms - 4
 
 
 
