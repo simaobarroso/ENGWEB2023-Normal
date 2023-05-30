@@ -17,17 +17,16 @@ router.get('/', function(req, res, next) {
 });
 
 
-
-/* GET /especies/:nipc  // FAZER ISTO !!!!!!!!!!!!!
-router.get('/especies/:nipc', function(req, res, next) {
+// GET /especies/:nespc 
+router.get('/especies/:nespc', function(req, res, next) {
   var data = new Date().toISOString().substring(0, 16)
-  Planta.getInstituicao(req.params.nipc)
+  Planta.getEspecie(req.params.nespc)
     .then(dados => {
-      res.render('instituicao', { i: dados, d: data }); 
+      res.render('especie', { i: dados, d: data }); 
     })
     .catch(erro => res.status(602).json(({erro: erro})))
 });
-*/
+
 /* GET /:id */
 router.get('/:id', function(req, res, next) {
   var data = new Date().toISOString().substring(0, 16)
