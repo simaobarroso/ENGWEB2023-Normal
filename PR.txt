@@ -1,0 +1,49 @@
+1.1) SETUP BASE DE DADOS -------------------------------------------------------------------------------------
+
+Estou a usar um teclado em ingles por isso pode acontecer de palavras nao tem acentos.
+
+ALTERACOES AO DATASET
+	Na pasta data estao o dataset original e o dataset alterado
+
+
+
+
+1.2) QUERIES ------------------------------------
+
+1. 
+
+
+
+2.
+
+
+
+3.
+
+
+
+4.
+
+
+5.
+
+
+
+1.3) EXERCICIO 1 --------------------------------------------------------------------------------
+A API encontra-se na pasta "ex1" e para ser usada:
+>> cd ex1
+>> npm install
+>> npm start
+
+
+
+2)EXERCICIO 2 ---------------------------------------------------------------------------
+A Web App encontra-se na pasta "ex2" e para ser usada:
+
+>> cd ex2
+>> npm install
+>> npm start
+
+
+[NOTAS FINAIS]: ------------------------------------------------------------------------------------------------
+
